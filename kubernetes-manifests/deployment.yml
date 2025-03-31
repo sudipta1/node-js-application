@@ -16,13 +16,13 @@ spec:
         app: service-a-deployment
     spec:
       containers:
-      - image: sudipta244/nodejs-application:14
+      - image: sudipta244/nodejs-application:17
         name: service-a
         imagePullPolicy: Always
         ports:
         - containerPort: 3001
         env:
         - name: OTEL_EXPORTER_JAEGER_ENDPOINT
-          value: "http://jaeger-collector.tracing:14268/api/traces"
+          value: "http://jaeger-collector.tracing:17268/api/traces"
         - name: SERVICE_B_URI
           value: "http://b-service.dev"
