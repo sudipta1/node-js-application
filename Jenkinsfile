@@ -43,7 +43,7 @@ pipeline {
                          git config --global user.email "sudipta.nayak@nayak.com"
                          git config --global user.name "Sudipta Nayak"
                          BUILD_NUMBER=${BUILD_NUMBER}
-                         sed -i "s/17/${BUILD_NUMBER}/g" kubernetes-manifests/deployment.yml
+                         sed -i "s/23/${BUILD_NUMBER}/g" kubernetes-manifests/deployment.yml
                          cat kubernetes-manifests/deployment.yml
                          git add kubernetes-manifests/deployment.yml
                          git commit -m "Updated deployment.yml into version ${BUILD_NUMBER}"
