@@ -16,10 +16,12 @@ pipeline {
         }
 
         stage('Build and Push') {
+             environment {
+                        DOCKER_IMAGE = '$DOCKER_USERNAME/nodejs-application:$BUILD_NUMBER'
+                        }
             steps {
                 withCredentials([usernamePassword(credentialsId: 'dockerhub-credentials', passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')]) {
-
-                        DOCKER_IMAGE = '$DOCKER_USERNAME/nodejs-application:$BUILD_NUMBER'
+        
                         sh "docker build -t DOCKER_IMAGE ."
                         sh "echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin"
                         sh "docker push DOCKER_IMAGE"
