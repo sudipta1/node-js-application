@@ -36,7 +36,7 @@ pipeline {
                 }
 
                 steps {
-                    withCredentials([string(credentialsId = 'sudipta1', variable = 'GITHUB_TOKEN')]){
+                    withCredentials([string(credentialsId: 'sudipta1', variable: 'GITHUB_TOKEN')]){
 
                         sh '''
                          git config --global --add safe.directory '*'
