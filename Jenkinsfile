@@ -18,10 +18,11 @@ pipeline {
         stage('Build and Push') {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'dockerhub-credentials', passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')]) {
-        
-                        sh "docker build -t nodejs-application:$BUILD_NO ."
+
+                        DOCKER_IMAGE = '$DOCKER_USERNAME/nodejs-application:$BUILD_NUMBER'
+                        sh "docker build -t DOCKER_IMAGE ."
                         sh "echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin"
-                        sh "docker push $DOCKER_USERNAME/nodejs-application:$BUILD_NO"
+                        sh "docker push DOCKER_IMAGE"
                     }
                 }
             }
