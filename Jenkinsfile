@@ -19,9 +19,9 @@ pipeline {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'dockerhub-credentials', passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')]) {
         
-                        sh "docker build -t ${imageName} ."
+                        sh "docker build -t nodejs-application:$BUILD_NO ."
                         sh "echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin"
-                        sh "docker push ${imageName}"
+                        sh "docker push $DOCKER_USERNAME/nodejs-application:$BUILD_NO"
                     }
                 }
             }
