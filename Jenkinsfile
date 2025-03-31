@@ -1,7 +1,7 @@
 pipeline {
     agent {
         docker {
-            image 'sudipta244/myagent-nodejs:v1'
+            image 'sudipta244/myagent-nodejs:v2'
             args '--user root -v /var/run/docker.sock:/var/run/docker.sock'
         }
     }
