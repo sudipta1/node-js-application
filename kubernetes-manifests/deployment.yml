@@ -18,6 +18,13 @@ spec:
       containers:
       - image: sudipta244/nodejs-application:23
         name: service-a
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 3000
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          failureThreshold: 3
         imagePullPolicy: Always
         ports:
         - containerPort: 3001
