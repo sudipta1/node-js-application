@@ -16,7 +16,7 @@ spec:
         app: service-a-deployment
     spec:
       containers:
-      - image: sudipta244/nodejs-application:22
+      - image: sudipta244/nodejs-application:23
         name: service-a
         livenessProbe:
           httpGet:
